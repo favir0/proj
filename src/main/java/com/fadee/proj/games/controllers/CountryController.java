@@ -5,6 +5,7 @@ import com.fadee.proj.games.services.CountryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @Tag(name = "Country", description = "the country API")
 @RequestMapping("/api/country")
+@SecurityRequirement(name = "BasicAuth")
 public class CountryController {
 
     private final CountryService countryService;

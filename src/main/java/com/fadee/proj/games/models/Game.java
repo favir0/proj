@@ -14,6 +14,7 @@ public class Game {
     @JoinColumn(nullable = false)
     private Genre genre;
     private Boolean is_multi_player;
+    @Column(length = 1500)
     private String description;
     private Float price;
     private Date date;

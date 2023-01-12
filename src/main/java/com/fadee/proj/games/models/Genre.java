@@ -7,6 +7,7 @@ public class Genre {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     private String name;
+    @Column(length = 1500)
     private String description;
 
     protected Genre() {}

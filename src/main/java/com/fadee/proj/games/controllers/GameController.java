@@ -5,6 +5,7 @@ import com.fadee.proj.games.services.GameService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @Tag(name = "Game", description = "the game API")
 @RequestMapping("/api/game")
+@SecurityRequirement(name = "BasicAuth")
 public class GameController {
 
     private final GameService gameService;

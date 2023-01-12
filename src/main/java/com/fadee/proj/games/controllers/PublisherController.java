@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -35,6 +36,7 @@ public class PublisherController {
         return publisherService.getById(id);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Create a publisher", description = "Returns created publisher")
     @ApiResponses(value = { @ApiResponse(responseCode = "201", description = "Successfully added") })
     @PostMapping
@@ -42,6 +44,7 @@ public class PublisherController {
         return publisherService.add(publisher);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Update a publisher by id", description = "Returns updated publisher")
     @ApiResponses(value = { @ApiResponse(responseCode = "202", description = "Successfully changed") })
     @PutMapping("{id}")
@@ -49,6 +52,7 @@ public class PublisherController {
         return publisherService.put(id, publisher);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Delete a publisher by id", description = "Returns deleted publisher")
     @ApiResponses(value = { @ApiResponse(responseCode = "203", description = "Successfully deleted") })
     @DeleteMapping("{id}")

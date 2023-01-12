@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -34,6 +35,7 @@ public class GenreController {
         return genreService.getById(id);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Create a genre", description = "Returns created genre")
     @ApiResponses(value = { @ApiResponse(responseCode = "201", description = "Successfully added") })
     @PostMapping
@@ -41,6 +43,7 @@ public class GenreController {
         return genreService.add(genre);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Update a genre by id", description = "Returns updated genre")
     @ApiResponses(value = { @ApiResponse(responseCode = "202", description = "Successfully changed") })
     @PutMapping("{id}")
@@ -48,6 +51,7 @@ public class GenreController {
         return genreService.put(id, genre);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Delete a genre by id", description = "Returns deleted genre")
     @ApiResponses(value = { @ApiResponse(responseCode = "203", description = "Successfully deleted") })
     @DeleteMapping("{id}")

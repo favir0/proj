@@ -24,3 +24,5 @@ INSERT INTO game (id, date, description, game_image, is_multi_player, name, pric
 VALUES (2, CURRENT_DATE, 'BRILLIANT GAME!!!!!!!!!!!!!', 'sample_image2.jpg', false, 'Slime castle', 80, 2, 1, 2);
 INSERT INTO game (id, date, description, game_image, is_multi_player, name, price, developer_id, genre_id, publisher_id)
 VALUES (3, CURRENT_DATE, 'Magnificent GAME!!!!!!!!!!!!!', 'sample_image3.jpg', true, 'Stellaris', 499, 3, 2, 3);
+
+INSERT INTO t_user_roles(user_id, roles_id) VALUES (2, 2);

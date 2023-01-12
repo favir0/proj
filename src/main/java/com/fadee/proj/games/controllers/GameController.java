@@ -8,6 +8,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -34,6 +36,7 @@ public class GameController {
         return gameService.getById(id);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Create a game", description = "Returns created game")
     @ApiResponses(value = { @ApiResponse(responseCode = "201", description = "Successfully added") })
     @PostMapping
@@ -41,6 +44,7 @@ public class GameController {
         return gameService.add(game);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Update a game by id", description = "Returns updated game")
     @ApiResponses(value = { @ApiResponse(responseCode = "202", description = "Successfully changed") })
     @PutMapping("{id}")
@@ -48,6 +52,7 @@ public class GameController {
         return gameService.put(id, game);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Delete a game by id", description = "Returns deleted game")
     @ApiResponses(value = { @ApiResponse(responseCode = "203", description = "Successfully deleted") })
     @DeleteMapping("{id}")

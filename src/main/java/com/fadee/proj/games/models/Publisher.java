@@ -11,7 +11,6 @@ public class Publisher {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Country country;
-
     protected Publisher() {}
     public Publisher(String name, String description, Country country) {
         this.name = name;
